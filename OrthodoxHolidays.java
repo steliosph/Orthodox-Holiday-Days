@@ -111,11 +111,12 @@ public class OrthodoxHolidays {
 	}
 
 	private void addYearAndAddToList(HolidayEnum holidayEnum) {
+		Calendar cal = (Calendar) holidayEnum.getCalendar().clone();
 		int year = calendar_.get(Calendar.YEAR);
-		Calendar cal = holidayEnum.getCalendar();
 		cal.set(Calendar.YEAR, year);
 		// Need to remove a month as months start from 0
-		cal.set(Calendar.MONTH, cal.get(Calendar.MONTH) - 1);
+		int month = cal.get(Calendar.MONTH);
+		cal.set(Calendar.MONTH, month - 1);
 		addToList(cal, holidayEnum.getName());
 	}
 
